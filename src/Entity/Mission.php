@@ -13,9 +13,6 @@ class Mission
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $id_mission = null;
-
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
@@ -37,18 +34,6 @@ class Mission
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdMission(): ?int
-    {
-        return $this->id_mission;
-    }
-
-    public function setIdMission(int $id_mission): static
-    {
-        $this->id_mission = $id_mission;
-
-        return $this;
     }
 
     public function getTitre(): ?string

@@ -4,15 +4,15 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-
     #[ORM\Column]
-    private ?int $id_user = null;
+    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -24,16 +24,9 @@ class User
     private ?string $adresse = null;
 
 
-    public function getIdUser(): ?int
+    public function getId(): ?int
     {
-        return $this->id_user;
-    }
-
-    public function setIdUser(int $id_user): static
-    {
-        $this->id_user = $id_user;
-
-        return $this;
+        return $this->id;
     }
 
     public function getEmail(): ?string
@@ -70,5 +63,10 @@ class User
         $this->adresse = $adresse;
 
         return $this;
+    }
+    
+    public function getUserIdentifier(): string
+    {
+        throw new \Exception('Not implemented');
     }
 }

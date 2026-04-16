@@ -13,9 +13,6 @@ class Candidature
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $id_candidature = null;
-
     #[ORM\Column(length: 255)]
     private ?string $statut = null;
 
@@ -33,17 +30,6 @@ class Candidature
         return $this->id;
     }
 
-    public function getIdCandidature(): ?int
-    {
-        return $this->id_candidature;
-    }
-
-    public function setIdCandidature(int $id_candidature): static
-    {
-        $this->id_candidature = $id_candidature;
-
-        return $this;
-    }
 
     public function getStatut(): ?string
     {
